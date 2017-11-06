@@ -1,0 +1,15 @@
+<ion-modal-view id="search_modal_page">
+  <ion-header-bar align-title="center" class="bar-positive">
+    <div class="buttons">
+      <button class="button back-button buttons button-clear header-item" ng-click="closeTermsConditions()"><i class="icon ion-android-arrow-back"></i></button>
+    </div>
+    <h1 class="title">{{'terms' | translate}}</h1>
+  </ion-header-bar>
+  <ion-content class="aboutusPage" id="termsPage">
+    <div>
+      <div class="item item-text-wrap" ng-if="page.id=='3'" ng-repeat="page in pages track by $index">
+        <div  ng-bind-html="page.description | trustAsHtml" ></div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

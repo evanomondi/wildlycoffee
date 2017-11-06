@@ -1,0 +1,65 @@
+<ion-view cache-view="false" view-title="{{selectedItem.menu_name}}">
+	<ion-nav-buttons side="left">
+		<button ui-sref="app.dashboard" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button id="cart_list_icon2" ng-click="viewCart()" class="button-icon button button-clear flaticon-trolley"><i class="badge badge-light header-badge">{{cartCount}}</i></button>
+	</ion-nav-buttons>
+	<ion-content id="items_list_page" ng-init="getItemsList()">
+		<ion-slide-box class="dashboard-slide" on-slide-changed="slideHasChanged($index)" does-continue="true" auto-play="true" slide-interval="6000">
+			<ion-slide>
+				<div class="image-container"><img ng-src="img/images/slide1.jpg"></div>
+			</ion-slide>
+			<ion-slide>
+				<div class="image-container"><img ng-src="img/images/slide2.jpg"></div>
+			</ion-slide>
+			<ion-slide>
+				<div class="image-container"><img ng-src="img/images/slide3.jpg"></div>
+			</ion-slide>
+		</ion-slide-box>
+		<div class="list card pageNote">
+			<div class="item item-text-wrap">{{selectedItem.punch_line}} </div>
+		</div>
+		<div class="row tabs-custom item-text-wrap">
+			<div class="col" ng-repeat="itemType in itemTypes | orderBy:'item_type' track by $index ">
+				<ion-radio ng-model="data.clientSide" ng-value="itemType.value"  ng-click="chooseItemType(itemType.value)">{{ itemType.text }}</ion-radio>
+			</div>
+		</div>
+		<div class="list listLink filter">
+			<a class="item item-button-right item-text-wrap item-thumbnail-left" ng-if="data.clientSide!='Addons'" ng-repeat="menuSubItem in menuSubItems  | orderBy:'item_name' | ItemsFilter:data.clientSide track by $index">
+				<img ng-src="{{menuSubItem.imageUrl}}" ng-click="openSelectedItem(menuSubItem)">
+				<div ng-click="openSelectedItem(menuSubItem)">
+					{{menuSubItem.item_name}}
+					<div class="amount">
+						<h2 class="addedAmount"><i class="">{{siteSettings.currency_symbol}}</i> {{menuSubItem.item_cost | number:2}}</h2>
+					</div>
+				</div>
+				<div class="buttons item-buttons">
+					<button class="button button-icon ion ion-ios-gear-outline" ng-click="openSelectedItem(menuSubItem)"></button>
+					<button class="button button-icon button-cart flaticon-commerce item_list" ng-click="addToCart(menuSubItem)"></button>
+				</div>
+			</a>
+			<ion-list class="subSubServiceList" ng-if="data.clientSide=='Addons'">
+				<p class="padding">
+					<span ng-if="cartCount>0">{{'totalCost' | translate}}:  {{totalAddonsCost}}</span>
+					<span ng-if="!cartCount>0">{{'selectMinimumOneItemThenOnlyAddonsWillApply' | translate}} </span>
+				</p>
+				<ion-item  class="item-thumbnail-right item-checkbox-left item-checkbox-custom item-text-wrap" ng-repeat="item in menuSubItems track by $index" ng-init="addonsTabInit()">
+					<img ng-src="{{item.imageUrl}}">
+					<ion-checkbox ng-model="addonCheck" ng-click="selectAddon(item,addonCheck, $index)"></ion-checkbox>
+					<h2>{{item.addon_name}}</h2>
+					<p><i class="icon">{{siteSettings.currency_symbol}}</i> {{item.price | number:2 }}</p>
+					<div class="addon-item" ng-if="addonCheck">
+						<button class="button button-circle button-outline button-small button-stable" ng-click="item.quantity = subtractQuantity(item.quantity);item.finalCost=changeAddonQuantity(item.quantity,item.price);calculateAddonTotal(item.price,item.quantity,'subtract');" ng-if="addonCheck">
+							<i class="icon ion-minus-round"></i> </button>
+						<span class="addon-item-quintity">{{item.quantity}}</span>
+						<button class="button button-circle button-outline button-small button-stable" ng-click="item.quantity = addQuantity(item.quantity);item.finalCost=changeAddonQuantity(item.quantity,item.price);calculateAddonTotal(item.price,item.quantity,'add'); " ng-if="addonCheck">
+							<i class="icon ion-plus-round"></i> </button>
+						<strong class="total-item-addon" ng-if="addonCheck" >{{siteSettings.currency_symbol}} {{item.finalCost | number:2}}</strong>
+					</div>
+				</ion-item>
+			</ion-list>
+			<p>{{noItemsAvailable}}</p>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,66 @@
+<ion-modal-view id="search_modal_page">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <h1 class="title">{{'stripe' | translate}}</h1>
+    <div class="buttons">
+      <button class="button button-clear button-icon ion ion-close-round" ng-click="closeStripePaymentModal()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form id="stripePaymentForm" name="stripePaymentForm" novalidate ng-submit="stripePaymentForm.$valid && stripePayment()">
+      <div class="row responsive-sm">
+        <div class="col">
+          <label class="item item-input item-icon-left"><i>{{siteSettings.currency_symbol}}</i>
+            <input type="number" name="amount" ng-disabled="true" ng-model="payment.amount" placeholder="{{'amount' | translate}}" required>
+          </label>
+          <div class="invalidDetails" ng-show="stripePaymentForm.amount.$error.required && (stripePaymentForm.amount.$dirty || submitted)"></div>
+          <div class="no-errors" ng-show="stripePaymentForm.amount.$valid"></div>
+        </div>
+        <div class="col">
+          <label class="item item-input item-icon-left item-icon-right cardRight"><i class="icon ion-card"></i>
+            <input style="margin-left: 42px;" type="number"  name="cardNo" ng-model="payment.cardNo" ng-change="checkLength(payment.cardNo,16)" placeholder="{{'cardNumber' | translate}}" required>
+          </label>
+          <div class="invalidDetails" ng-show="stripePaymentForm.cardNo.$error.required && (stripePaymentForm.cardNo.$dirty || submitted)"></div>
+          <div class="no-errors" ng-show="stripePaymentForm.cardNo.$valid"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label class="item item-input item-icon-left no-border no-margin"><i class="icon ion-calendar"></i>
+            <span style="margin-left: 42px;">{{'expirationDate' | translate}}</span> </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label class="item no-padiing-left item-input item-icon-left item-select">
+            <div class="input-label"> {{'month' | translate}} </div>
+            <select name="ExpMonth" ng-model="payment.ExpMonth" ng-options="item.value as item.value for item in months" required>
+              <option value="">MM</option>
+            </select>
+          </label>
+          <div class="invalidDetails" ng-show="stripePaymentForm.ExpMonth.$error.required && (stripePaymentForm.ExpMonth.$dirty || submitted)"></div>
+          <div class="no-errors" ng-show="stripePaymentForm.ExpMonth.$valid"></div>
+        </div>
+        <div class="col">
+          <label class="item no-padiing-left item-input item-icon-left item-select">
+            <div class="input-label"> {{'year' | translate}} </div>
+            <select name="ExpYear" ng-model="payment.ExpYear" ng-options="item.value as item.value for item in years" required>
+              <option value="">YYYY</option>
+            </select>
+          </label>
+          <div class="invalidDetails" ng-show="stripePaymentForm.ExpYear.$error.required && (stripePaymentForm.ExpYear.$dirty || submitted)"></div>
+          <div class="no-errors" ng-show="stripePaymentForm.ExpYear.$valid"></div>
+        </div>
+      </div>
+      <div class="row responsive-sm">
+        <div class="col">
+          <label class="item item-input item-icon-left"><i class="icon ion-ios-keypad-outline"></i>
+            <input style="margin-left: 42px;" type="number" name="cvc" ng-model="payment.cvc" ng-change="checkCVC(payment.cvc,3)"  placeholder="cvc" required>
+          </label>
+          <div class="invalidDetails" ng-show="stripePaymentForm.cvc.$error.required && (stripePaymentForm.cvc.$dirty || submitted)"></div>
+          <div class="no-errors" ng-show="stripePaymentForm.cvc.$valid"></div>
+        </div>
+      </div>
+      <button type="submit" class="button button-block button-positive" ng-click="submitted=true">{{'proceedToPay' | translate}}</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,52 @@
+<ion-view view-title="{{'placeOrder' | translate}}">
+	<ion-nav-buttons side="left">
+		<button ui-sref="app.cart_list" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+	</ion-nav-buttons>
+	<ion-content ng-init="homeDeliveryInit()">
+		<form id="payment_page" name="paymentForm" novalidate ng-submit="paymentForm.$valid && doPayment()">
+			<div class="list listForm pyment-type">
+				<div class="item item-icon-left">
+					<i class="icon">{{siteSettings.currency_symbol}}</i>{{'cost' | translate}}
+					<span class="item-note">{{booking.cost | number:2}}</span>
+				</div>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : (paymentForm.mobileNo.$error.required || paymentForm.mobileNo.$error.pattern) && (paymentForm.mobileNo.$dirty || submitted), 'valid' : paymentForm.mobileNo.$valid   && (paymentForm.mobileNo.$dirty && submitted)}">
+					<i class="icon mdi mdi-phone"></i>
+					<input type="number" name="mobileNo" ng-model="booking.phone" ng-pattern="/^[0-9]{10,10}$/" required placeholder="{{'phoneNumber' | translate}}">
+				</label>
+
+				<label class="item item-input item-icon-left"><i class="icon mdi mdi-calendar"></i> <span class="input-label">{{'date' | translate}}</span>
+					<input type="text" ng-model="booking.date" min="{{dateMin}}" id="delivery_book_date" placeholder="{{'selectDate' | translate}}" onfocus="(this.type='date')" onblur="(this.type='text')">
+				</label>
+			</div>
+			<div class="list listForm pyment-type" id="radioGroup1">
+				<div class="item item-divider">{{'selectAddress' | translate}}</div>
+				<div class="item item-text-wrap" ng-if="addedAddress.length==0">
+					<p>No address added</p>
+				</div>
+				<ion-radio class="item-text-wrap" ng-model="addressCheck.choice" ng-value="address.ua_id" ng-if="addedAddress.length!=0" ng-repeat="address in addedAddress track by $index" ng-click="selectBookingAddress(address)" name="radioGroup1">
+					<h2>{{address.house_no}}</h2>
+					<p>
+						<span ng-if="address.apartment_name!=''">{{address.apartment_name}},</span>
+						<span ng-if="address.other!=''">{{address.other}},</span>
+					</p>
+					<p><span ng-if="address.landmark!=''">{{address.landmark}},</span>
+					<span ng-if="address.city!=''">{{address.city}}</span></p>
+				</ion-radio>
+				<div class="padding text-right">
+					<button class="button button-assertive button-outline button-small" ui-sref="app.addAddress">{{'addNewAddress' | translate}}</button>
+				</div>
+			</div>
+			<ion-list class="payment-type" id="radioGroup2">
+				<div class="item item-divider">{{'payment' | translate}}</div>
+						<ion-radio ng-model="booking.choice" class="item-text-wrap" ng-required="true" ng-value="'online'" name="radioGroup2"> {{'onlinePayment' | translate}}</ion-radio>
+						<ion-radio ng-model="booking.choice" ng-required="true" ng-value="'cash'"class="item-text-wrap" name="radioGroup2"> {{'cashOnDeliver' | translate}}</ion-radio>
+			</ion-list>
+		</div>
+			<div class="row">
+				<div class="col">
+					<button class="button button-block button-assertive" type="submit" ng-click="submitted=true">{{'proceed' | translate}}</button>
+				</div>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

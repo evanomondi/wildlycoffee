@@ -1,0 +1,36 @@
+<ion-view cache-view="false" view-title="{{'myProfile' | translate}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+  <ion-content ng-init="userAddressInit()">
+    <div class="list">
+      <div class="item item-divider" ui-sref="app.editProfile">
+        {{'contactInformation' | translate}}
+        <span class="item-note color-green">{{'update' | translate}} </span>
+      </div>
+      <div class="item item-text-wrap">
+        <i class="icon mdi mdi-email"></i> {{'email' | translate}}:
+        <p>{{profile.email}}</p>
+      </div>
+      <div class="item item-text-wrap">
+        <i class="icon mdi mdi-phone"></i> {{'phoneNumber' | translate}}:
+        <p>{{profile.phone}}</p>
+      </div>
+      <div class="item item-divider" ng-click="openEditAddress('')">
+        {{'savedAddresses' | translate}}
+        <span class="item-note color-green">{{'addNew' | translate}} </span>
+      </div>
+      <div class="item item-text-wrap" ng-if="addedAddress.length==0">
+        <p>{{'noAddressAdded' | translate}} </p>
+      </div>
+      <div class="item item-text-wrap" ng-if="addedAddress.length!=0" ng-repeat="address in addedAddress track by $index">
+        <i class="icon mdi mdi-pencil" style="float:right" ng-click="openEditAddress(address)"></i>
+        <h2>{{address.house_no}}</h2>
+        <h3><span ng-if="address.apartment_name!=''">{{address.apartment_name}},</span></h3>
+        <p><span ng-if="address.other!=''">{{address.other}},</span>
+          <br><span ng-if="address.landmark!=''">{{address.landmark}},</span>
+          <br><span ng-if="address.city!=''">{{address.city}}</span></p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

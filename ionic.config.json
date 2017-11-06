@@ -1,0 +1,14 @@
+{
+  "name": "Crunchy",
+  "app_id": "2a7f8e4f",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

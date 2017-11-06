@@ -1,0 +1,14 @@
+<div class="list">
+    <div ng-if="itemSizes.length!=0">
+    <div class="item item-title">
+         {{'customizeYourItem' | translate}}
+        <span class="item-note"><i class="icon">{{siteSettings.currency_symbol}}</i> {{selected_item.costAfterSize}}</span>
+    </div>
+    <ion-radio ng-repeat="size in itemSizes | orderBy:'option_name' track by $index" ng-model="radioCheck" ng-value="{{size.option_id}}" ng-click="selectedItemSize(size)">
+        <h2>{{size.option_name}}</h2>
+        <p><i class="icon">{{siteSettings.currency_symbol}}</i> {{size.price}}</p>
+    </ion-radio>
+    </div>
+    <p ng-if="itemSizes.length==0">{{'noItemSizesAvailable' | translate}}</p>
+</div>
+

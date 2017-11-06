@@ -1,0 +1,41 @@
+<ion-view cache-view="false" view-title="{{'editProfile' | translate}}">
+	<ion-nav-buttons side="left">
+		<button ui-sref="app.viewProfile" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="padding" id="editProfilePage" ng-init="editProfileInit()">
+		<div class="list formList">
+			<form class="forms" name="editProfileForm" novalidate ng-submit="editProfileForm.$valid && updateProfile()">
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : editProfileForm.firstName.$error.required && (editProfileForm.firstName.$dirty || submitted), 'valid' : editProfileForm.firstName.$valid   && (editProfileForm.firstName.$dirty || submitted)}">
+					<i class="icon mdi mdi-account"></i>
+					<input type="text" name="firstName" ng-model="editProfile.first_name" required placeholder="{{'firstName' | translate}}">
+				</label>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : editProfileForm.lastName.$error.required && (editProfileForm.lastName.$dirty || submitted), 'valid' : editProfileForm.lastName.$valid   && (editProfileForm.lastName.$dirty || submitted)}">
+					<i class="icon mdi mdi-account"></i>
+					<input type="text" name="lastName" ng-model="editProfile.last_name" required placeholder="{{'lastName' | translate}}">
+				</label>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : (editProfileForm.email.$error.required || editProfileForm.email.$error.pattern) && (editProfileForm.email.$dirty || submitted), 'valid' : editProfileForm.email.$valid   && (editProfileForm.email.$dirty || submitted)}">
+					<i class="icon mdi mdi-email"></i>
+					<input type="email" name="email" ng-disabled="true" ng-model="editProfile.identity" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" placeholder="Email">
+				</label>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : (editProfileForm.mobileNo.$error.required || editProfileForm.mobileNo.$error.pattern) && (editProfileForm.mobileNo.$dirty || submitted), 'valid' : editProfileForm.mobileNo.$valid   && (editProfileForm.mobileNo.$dirty || submitted)}">
+					<i class="icon mdi mdi-phone"></i>
+					<input type="number" name="mobileNo" ng-model="editProfile.phone" ng-pattern="/^[0-9]{10,10}$/" required placeholder="{{'phoneNumber' | translate}}">
+				</label>
+
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : editProfileForm.city.$error.required && (editProfileForm.city.$dirty || submitted), 'valid' : editProfileForm.city.$valid   && (editProfileForm.city.$dirty || submitted)}">
+					<i class="icon mdi mdi-crosshairs-gps"></i>
+					<input type="text" name="city" ng-model="editProfile.city"  required placeholder="{{'city' | translate}}">
+				</label>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : editProfileForm.landmark.$error.required && (editProfileForm.landmark.$dirty || submitted), 'valid' : editProfileForm.landmark.$valid   && (editProfileForm.landmark.$dirty || submitted)}">
+					<i class="icon mdi mdi-map-marker-radius"></i>
+					<input type="text" name="landmark" ng-model="editProfile.landmark"  required placeholder="{{'location' | translate}}">
+				</label>
+				<label class="item item-input item-icon-left" ng-class="{ 'has-error' : editProfileForm.address.$error.required && (editProfileForm.address.$dirty || submitted), 'valid' : editProfileForm.address.$valid   && (editProfileForm.address.$dirty || submitted)}">
+					<i class="icon mdi mdi-map-marker"></i>
+					<input type="text" name="address" ng-model="editProfile.address" required placeholder="{{'address' | translate}}">
+				</label>
+				<button class="button button-block button-assertive" type="submit" ng-click="submitted=true">{{'update' | translate}}</button>
+			</form>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,80 @@
+<ion-view  cache-view="false" view-title="{{'cartList' | translate}}">
+
+    <ion-nav-buttons side="left">
+        <button ng-click="cartListBack()" ng-if="cartListBack_button" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button id="edit" class="button button-icon button-clear ion ion-android-create"  ng-click="edit_order('false')"></button>
+        <button id="done" class="button button-icon button-clear ion ion-android-done"   ng-click="edit_order('true')"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" id="cart_list_page" ng-init="getCartList()">
+    <p>{{'items' | translate}} </p>
+        <div ng-if="cartListItems.length>0">
+    <div class="list checkoutItems" ng-repeat="item in cartListItems track by $index">
+      <div class="item"><button class="button button-icon button-clear ion ion-android-close  button-assertive"  style="right: 0;float: right; " ng-if="!editOrderVal" ng-click="remove_item_from_cart(item)"></button>
+        <h2>{{item.item_name}}</h2>
+        <div class="row customRow">
+          <div class="col col-center  first-col">{{'cost' | translate}}</div>
+          <div class="col  col-center">
+            <p class="itemAfterDiscount" >
+                <span>{{item.costAfterSize | number:2}}</span>
+                <!--<span >{{size_item_cost | number:2}}</span>-->
+            </p>
+          </div>
+          <div class="col col-10 col-center">X</div>
+          <button class="button-icon button button-clear button-small button-positive" ng-click="item.quantity = subtractQuantity(item.quantity);item.finalCost=changeQuantity(item.quantity,item.costAfterSize);calculateTotalCost(cartListItems,cost.totalCost);" ng-if="!editOrderVal">
+          <i class="icon ion-minus-round"></i> </button>
+         <div class="col col-10 col-center">
+            <input type="number" ng-disabled="true" ng-model="item.quantity">
+          </div>
+          <button class="button-icon button button-clear button-small button-positive" ng-click="item.quantity = addQuantity(item.quantity);item.finalCost=changeQuantity(item.quantity,item.costAfterSize);calculateTotalCost(cartListItems,cost.totalCost);" ng-if="!editOrderVal"> <i class="icon ion-plus-round"></i> </button>
+          <div class="col col-10 col-center">=</div>
+          <div class="col col-center last-col"><strong>{{item.finalCost | number:2 }}</strong></div>
+        </div>
+      </div>
+    </div>
+            <div style="color:#2FD25A;text-align:center;padding:11px;font-size:19px;" ng-if="!editOrderVal" ng-click="home()">
+                {{'addItems' | translate}}
+            </div>
+            <div ng-if="bookedAddons.length>0">
+                <p>{{'addons' | translate}} </p>
+                <div class="list checkoutItems" ng-repeat="item in bookedAddons track by $index">
+                    <div class="item"><button class="button button-icon button-clear ion ion-android-close  button-assertive"  style="right: 0;float: right; " ng-if="!editOrderVal" ng-click="remove_addon_from_cart(item)"></button>
+                        <h2>{{item.addon_name}}</h2>
+                        <div class="row customRow">
+                            <div class="col col-center  first-col">{{'cost' | translate}}</div>
+                            <div class="col  col-center">
+                                <p class="itemAfterDiscount">{{item.price | number:2}}</p>
+                            </div>
+                            <div class="col col-10 col-center">X</div>
+                            <button class="button-icon button button-clear button-small button-positive" ng-click="item.quantity = subtractQuantity(item.quantity);item.finalCost=changeQuantity(item.quantity,item.price);calculateTotalCost(bookedAddons,cost.totalCost);" ng-if="!editOrderVal">
+                                <i class="icon ion-minus-round"></i> </button>
+                            <div class="col col-10 col-center">
+                                <input type="number" ng-disabled="true" ng-model="item.quantity">
+                            </div>
+                            <button class="button-icon button button-clear button-small button-positive" ng-click="item.quantity = addQuantity(item.quantity);item.finalCost=changeQuantity(item.quantity,item.price);calculateTotalCost(bookedAddons,cost.totalCost);" ng-if="!editOrderVal"> <i class="icon ion-plus-round"></i> </button>
+                            <div class="col col-10 col-center">=</div>
+                            <div class="col col-center last-col"><strong>{{item.finalCost | number:2 }}</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="list amountChecklist">
+          <div class="item item-divider"> {{'totalCost' | translate}}({{siteSettings.site_currency}}) <span class="item-note"> {{cost.totalCost | number:2}} </span> </div>
+    </div>
+    <button class="button-block button button-assertive" ng-disabled="!editOrderVal" ng-style="disableTagButton"
+            ng-click="saveAndContinue()">{{'order' | translate}}</button>
+    </div>
+
+    <div class="list grandTotal" ng-if="cartListItems.length==0" >
+      <div class="item">{{noItemsInCart}}</div>
+    </div>
+
+    <div style="color:#2FD25A;text-align:center;padding:11px;font-size:19px;" ng-if="!edit_order_val && cartListItems.length==0" ng-click="home()">
+        {{'addItems' | translate}}
+    </div>
+  </ion-content>
+</ion-view>

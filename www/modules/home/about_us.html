@@ -1,0 +1,40 @@
+<ion-view cache-view="false" view-title="{{'aboutUs' | translate}}" name="aboutUsView">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear jsm-home" ng-click="home()"></button>
+	</ion-nav-buttons>
+	<ion-content class="aboutusPage" id="aboutUsPage" ng-init="aboutUs()">
+		<div class="padding">
+			<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="false" options="options" bounds="map.bounds" control="googlemap">
+				<ui-gmap-window show="show" coords='windowCoords' closeClick="closeClick()">
+					<div>{{parkName}}</div>
+				</ui-gmap-window>
+				<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" options="'options'" doRebuildAll="true" click="onClick">
+				</ui-gmap-markers>
+			</ui-gmap-google-map>
+		</div>
+		<div class="aboutUsDesc">
+			<div class="item item-text-wrap" ng-if="page.id=='1'" ng-repeat="page in pages track by $index">
+				<div ng-bind-html="page.description | trustAsHtml"></div>
+			</div>
+			<div class="item item-text-wrap address">
+				<h2>{{'address' | translate}}</h2>
+				<h4 ng-if="address.site_name!=''">{{siteSettings.site_name }} </h4>
+				<p>
+				<span ng-if="address.address!=''">{{siteSettings.address}} </span><br>
+				<span ng-if="address.city!=''">{{siteSettings.city}} </span>,
+				<span ng-if="address.state!=''">{{siteSettings.state}} </span>,
+				<span ng-if="address.country!=''">{{siteSettings.country}} </span>,
+				<span ng-if="address.zip!=''">{{siteSettings.zip}} </span></p>
+				<p><b>{{'phoneNumber' | translate}} : </b><br> <span ng-if="address.phone!=''">{{siteSettings.phone}}</span>,
+				<span ng-if="address.land_line!=''">{{siteSettings.land_line}} </span></p>
+				<p><b>{{'email' | translate}}: </b><br>
+				<span ng-if="address.portal_email!=''">{{siteSettings.portal_email}} </span>
+				</p>
+			</div>
+			<div class="item item-text-wrap">
+				<h2 class="text-center">{{'version' | translate}}  {{appVersion}}</h2>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+

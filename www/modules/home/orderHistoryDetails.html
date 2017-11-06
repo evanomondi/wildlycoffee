@@ -1,0 +1,21 @@
+<ion-view view-title="{{'orderItems' | translate}}">
+	<ion-nav-buttons side="left">
+		<button ui-sref="app.orders_history" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+	</ion-nav-buttons>
+	<ion-content id="orderHistoryDetailsPage">
+		<div class="list card pageNote">
+			<div class="item item-text-wrap">{{'allTimeFavourites' | translate}} </div>
+		</div>
+		<div class="list listLink filter">
+			<div class="item item-text-wrap item-thumbnail-left" ng-class="{'item-disable': item.is_deleted!='0'}" ng-repeat="item in orderItems  track by $index | orderBy:'item_name'">
+			<img ng-src="{{item.imageUrl}}" alt="">
+				<div>
+				<h2>{{item.item_name}}</h2>
+					<h2 class="addedAmount"><i class="mdi ">{{siteSettings.currency_symbol}}</i> {{item.item_cost| number:2}}</h2>
+					<p class="alert" ng-if="item.is_deleted!='0'">{{'deleted' | translate}}</p>
+				</div>
+			</div>
+			<p>{{noItemsAvailable}}</p>
+		</div>
+	</ion-content>
+</ion-view>

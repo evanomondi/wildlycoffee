@@ -1,0 +1,22 @@
+<ion-view view-title="{{offerName.name}}">
+	<ion-nav-buttons side="left">
+		<button ui-sref="app.offers" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+	</ion-nav-buttons>
+	<ion-content id="offerDetailsPage">
+		<div class="list card pageNote">
+			<div class="item item-text-wrap">{{'allTimeFavourites' | translate}} </div>
+		</div>
+		<div class="list listLink filter">
+			<div class="item item-text-wrap item-thumbnail-left" ng-repeat="item in offerItems  track by $index | orderBy:'item_name'">
+			<img ng-src="{{item.imageUrl}}" alt="">
+				<div>
+				<h2>{{item.item_name}}</h2>
+					<div class="amount">
+						<h2 class="addedAmount"><i class="mdi ">{{'quantity' | translate}} : </i> {{item.quantity }}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p>{{noItemsAvailable}}</p>
+	</ion-content>
+</ion-view>

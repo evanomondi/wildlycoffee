@@ -1,0 +1,113 @@
+.dw { position: absolute; top: 5%; left: 0; z-index: 1001; color: #000; font-family: arial, verdana, sans-serif; font-size: 12px; text-shadow: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -ms-touch-action: none; background:#80a204; }
+.dwi { position: static; margin: 5px; display: inline-block }
+.dwwr { min-width: 170px; zoom: 1; padding: 0 10px; text-align: center }
+.dwo { width: 100%; background: #000; position: absolute; top: 0; left: 0; z-index: 1000; opacity: .7; filter: Alpha(Opacity=70) }
+.dw-bubble-bottom { margin-top: 18px }
+.dw-bubble-top { margin-top: -18px }
+.dw-bubble .dw-arrw { position: absolute; left: 0; width: 100% }
+.dw-bubble-top .dw-arrw { bottom: -36px }
+.dw-bubble-bottom .dw-arrw { top: -36px }
+.dw-bubble .dw-arrw-i { margin: 0 30px; position: relative; height: 36px }
+.dw-bubble .dw-arr { display: block }
+.dw-arr { display: none; position: absolute; left: 0; width: 0; height: 0; border-width: 18px 18px; border-style: solid; margin-left: -18px }
+.dw-bubble-bottom .dw-arr { top: 0; border-color: transparent transparent #fff transparent }
+.dw-bubble-top .dw-arr { bottom: 0; border-color: #fff transparent transparent transparent }
+.dwc { float: none; margin: 0 2px 5px 2px; padding-top: 30px; display: inline-block }
+.dwcc { clear: both }
+.dwl { text-align: center; line-height: 30px; height: 30px; white-space: nowrap; position: absolute; top: -30px; width: 100% }
+.dwv { padding: 10px 0; border-bottom: 1px solid #000 }
+.dwrc { -webkit-border-radius: 3px; border-radius: 3px }
+.dwwc { margin: 0; padding: 0 2px; position: relative; background: #000; zoom: 1 }
+.dwwl { margin: 4px 2px; position: relative;  z-index: 5 }
+.dww { margin: 0 2px; overflow: hidden; position: relative }
+.dwsc .dww { color: #fff;  }
+.dww ul { list-style: none; margin: 0; padding: 0; position: relative; z-index: 2 }
+.dww li { list-style: none; margin: 0; padding: 0 5px; display: block; text-align: center; line-height: 40px; font-size: 26px; white-space: nowrap; vertical-align: bottom; opacity: .3; filter: Alpha(Opacity=30) }
+.dww li.dw-hl { background: #fff; background: rgba(255,255,255,.3) }
+.dww li.dw-v { opacity: 1; filter: Alpha(Opacity=100) }
+.dww li.dw-h { visibility: hidden }
+.dw-i { position: relative; height: 100% }
+.dwwb { position: absolute; z-index: 4; left: 0; cursor: pointer; width: 100%; height: 40px; text-align: center; opacity: 1; transition: opacity .2s linear; -webkit-transition: opacity .2s linear }
+.dwa .dwwb { opacity: 0 }
+.dwwbp { top: 0; -webkit-border-radius: 3px 3px 0 0; border-radius: 3px 3px 0 0; font-size: 40px }
+.dwwbm { bottom: 0; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; font-size: 32px; font-weight: bold }
+.dwpm .dwwc { background: transparent }
+.dwpm .dww { margin: -1px }
+.dwpm .dww li { text-shadow: none }
+.dwpm .dwwol { display: none }
+.dwwo { position: absolute; z-index: 3; top: 0; left: 0; width: 100%; height: 100%;background: rgba(238,238,238,1);
+background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(238,238,238,1)), color-stop(49%, rgba(238,238,238,0)), color-stop(100%, rgba(238,238,238,1)));
+background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -o-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee', GradientType=0 ); }
+
+.dwwol { position: absolute; z-index: 1; top: 50%; left: 0; width: 100%; height: 0; margin-top: -1px; border-top: 1px solid #333; border-bottom: 1px solid #555 }
+
+.dwbg .dwb { cursor: pointer; overflow: hidden; display: block; height: 40px; line-height: 40px; padding: 0 15px; margin: 0 2px; font-size: 14px; font-weight: bold; text-decoration: none; text-shadow: 0 -1px 1px #000; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); color: #fff; white-space: nowrap; text-overflow: ellipsis; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5); -webkit-border-radius: 5px }
+.dwbc { padding: 5px 0; text-align: center; clear: both }
+.dwbc:after { content: ''; display: block; clear: both }
+.dwbw { display: inline-block; float: left; width: 50%; position: relative; z-index: 5 }
+.dwbc-p .dwbw { width: 33% }
+.dwhl { padding-top: 10px }
+.dwhl .dwl { display: none }
+.dwbg { background: #fff; border-radius: 3px; -webkit-border-radius: 3px }
+.dwbg .dwpm .dww { color: #000; background: #80a204; border: 1px solid #AAA }
+.dwbg .dwwb { background: #ccc; color: #888; text-shadow: 0 -1px 1px #333; box-shadow: 0 0 5px #333; -webkit-box-shadow: 0 0 5px #333 }
+.dwbg .dwwbp {  }
+.dwbg .dwwbm {  }
+.dwbg .dwb-a { }
+.dwbg .dwwl .dwb-a {}
+.android-ics .dw { padding: 0; color: #80a204; background: #eee; border-top: 1px solid #4a494a }
+
+li.dw-v.dw-sel div.dw-i{ font-size:22px; }
+
+.android-ics .dwv:before{content:"\f3c7"; font-family: "Ionicons";display: inline-block; margin:0 10px 0 0; font-size:20px;}
+.android-ics .dw .dwwc, .android-ics .dw .dwwl, .android-ics .dw .dww, .android-ics .dw .dwb { background: 0 }
+.android-ics .dwwr { padding: 0 }
+.android-ics .dwc { margin: 0; padding: 30px 10px 1px 10px }
+.android-ics .dwhl { padding: 1px 10px }
+.android-ics .dwv { height: 54px; line-height: 54px; padding: 0; border-bottom: 1px solid #ddd; font-size: 18px; font-family:'open_sansregular';}
+.android-ics .dwwl { margin: 0 2px }
+.android-ics .dww { border: 0 }
+.android-ics .dw .dwpm .dww { border: 0; background: 0 }
+.android-ics .dww li { color: #333; font-size: 18px; text-shadow: none; line-height:50px; -webkit-transition: all 1s ease-in-out;  -moz-transition: all 1s ease-in-out;  -o-transition: all 1s ease-in-out;  transition: all 1s ease-in-out; }
+.android-ics .dww li.dw-hl { background: #96be05; background: rgba(49,182,231,.5) }
+.android-ics .dwwo {background: rgba(238,238,238,1);
+background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(238,238,238,1)), color-stop(49%, rgba(238,238,238,0)), color-stop(100%, rgba(238,238,238,1)));
+background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -o-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+background: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 49%, rgba(238,238,238,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee', GradientType=0 );}
+.android-ics .dw .dwwb { background: #292829; box-shadow: none; -webkit-box-shadow: none }
+.android-ics .dwwb span { display: none }
+.android-ics .dwwb:after { position: absolute; top: 50%; left: 50%; margin-top: -8px; margin-left: -8px; color: #7e7e7e; width: 0; height: 0; border-width: 8px; border-style: solid; content: '' }
+.android-ics .dwwbm { top: 0; bottom: auto }
+.android-ics .dwwbp { bottom: 0; top: auto }
+.android-ics .dwwbm:after { border-color: transparent transparent #7e7e7e transparent }
+.android-ics .dwwbp:after { border-color: #7e7e7e transparent transparent transparent }
+.android-ics .dw .dwwl .dwb-a { background: #292829 }
+.android-ics .dwwbm.dwb-a:after { border-color: transparent transparent #319abd transparent }
+.android-ics .dwwbp.dwb-a:after { border-color: #319abd transparent transparent transparent }
+.android-ics .dw .dwwol { width: 60%; left: 20%; height: 50px; border-top: 2px solid #96be05; border-bottom: 2px solid #96be05; margin-top: -25px; display: block }
+.android-ics .dwbc {padding: 0 }
+.android-ics .dw .dwb { height: 50px; line-height: 50px; padding: 0; margin: 0; font-weight: normal; text-shadow: none; box-shadow: none; border-radius: 0; -webkit-border-radius: 0; -webkit-box-shadow: none;font-family:'open_sansregular'; font-size:16px; text-transform:uppercase; }
+.android-ics .dw .dwb-a { background: #29799c }
+.android-ics .dwb-s .dwb, .android-ics .dwb-n .dwb {  background:#96be05; }
+.android-ics.light .dw { background: #f5f5f5 }
+.android-ics.light .dww li { color: #000 }
+.android-ics.light .dwwo {  }
+.android-ics.light .dw .dwwb { background: #f5f5f5; color: #f5f5f5 }
+.android-ics.light .dwbc { border-top: 1px solid #dbdbdb }
+.android-ics.light .dwb { color: #000 }
+.android-ics.light .dwb-a { color: #fff }
+.android-ics.light .dwb-s .dwb, .android-ics.light .dwb-n .dwb { border-right: 1px solid #dbdbdb }
+.android-ics .dw-bubble-bottom .dw-arr { border-color: transparent transparent #292829 transparent }
+.android-ics .dw-bubble-top .dw-arr { border-color: #292829 transparent transparent transparent }
+.android-ics.light .dw-bubble-bottom .dw-arr { border-color: transparent transparent #f5f5f5 transparent }
+.android-ics.light .dw-bubble-top .dw-arr { border-color: #f5f5f5 transparent transparent transparent }
+.dwb-c .dwb{background:#f65429 !important;}

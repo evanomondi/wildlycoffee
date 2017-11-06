@@ -1,0 +1,12 @@
+<ion-view cache-view="false" title="{{'makePayment' | translate}}">
+    <ion-nav-buttons side="left">
+        <button ui-sref="app.home_delivery" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+    </ion-nav-buttons>
+  <ion-content>
+    <div class="item item-divider">{{'paymentMethod' | translate}}</div>
+    <div class="row buttons-payment">
+      <div class="col"><button ng-click="openStripePaymentModal()" class="button button-block button-positive"> <img ng-src="img/stripe.png"/></button></div>
+      <div class="col"><button ng-click="paypalPayment()" class="button button-block button-light"><img  ng-src="img/paypal.png"/></button></div>
+    </div>
+  </ion-content>
+</ion-view>

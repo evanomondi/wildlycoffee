@@ -1,0 +1,48 @@
+<ion-view cache-view="false" view-title="{{'login' | translate}}" class="loginScreen">
+   <ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+	</ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear jsm-home" ng-click="home()"></button>
+    </ion-nav-buttons>
+  <ion-content class="centerPage" id="loginPage">
+    <div class="logo"> <img src="http://wildlycoffee.co.ke/uploads/site_logo//site_logo.png" alt=""> </div>
+    <div class="list formList">
+      <form name="SignInForm" novalidate ng-submit="SignInForm.$valid && signIn()">
+        <label class="item item-input item-icon-left"
+      ng-class="{ 'has-error' : (SignInForm.email.$error.required || SignInForm.email.$error.pattern)  && (SignInForm.email.$dirty || submitted),
+      'valid' : SignInForm.email.$valid && (SignInForm.email.$dirty || SignInForm.$submitted)}">
+            <i class="icon mdi mdi-email-outline"></i>
+          <input type="email" placeholder="{{'enterEmail' | translate}}" name="email"  ng-model="login.email" required
+                    ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i">
+        </label>
+        <label class="item item-input item-icon-left"
+      ng-class="{ 'has-error' : SignInForm.password.$error.required && (SignInForm.password.$dirty || submitted),
+      'valid' : SignInForm.password.$valid  && (SignInForm.password.$dirty || SignInForm.$submitted)}">
+            <i class="icon mdi mdi-lock-outline"></i>
+          <input type="password"
+          placeholder="{{'password' | translate}}" name="password" ng-model="login.password" required="true">
+        </label>
+        <button class="button button-block button-assertive" type="submit" ng-click="submitted=true"> {{'signIn' | translate}} </button>
+      </form>
+      <div class="row socialButtons">
+        <div class="col col-center">
+          <button class="button button-block button-positive" ng-click="facebookLogin()"><i class="icon mdi mdi-facebook"></i> {{'signIn' | translate}} </button>
+        </div>
+        <div class="col col-costom col-center">{{'or' | translate}}</div>
+        <div class="col col-center">
+          <button  class="button button-block button-assertive" ng-click="googleLogin()"><i class="icon mdi mdi-google-plus"></i> {{'signIn' | translate}} </button>
+        </div>
+      </div>
+
+        <div class="row buttonsClear">
+        <div class="col">
+          <button class="button button-clear button-stable button-block" ui-sref="forgetPassword">{{'forgotPassword' | translate}}</button>
+        </div>
+        <div class="col">
+          <button class="button button-clear button-stable button-block" ui-sref="registration">{{'newUser' | translate}} <strong>{{'signUpHere' | translate}}</strong></button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

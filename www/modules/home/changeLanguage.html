@@ -1,0 +1,21 @@
+<ion-view cache-view="false" view-title="{{'changeLanguage' | translate}}">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+	</ion-nav-buttons>
+	<ion-nav-bar class="bar-stable bar-positive" align-title="center" id="changeLanguage">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="display:block;" ng-click="loadStrings()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content padding="true">
+		<div class="list payment-type text-left">
+			<div class="item item-divider">
+				<h2>{{'selectLanguage' | translate}}</h2> </div>
+			<div class="row" ng-repeat="item in languages">
+				<div class="col">
+					<ion-radio ng-model="language.name" ng-value="'{{item.language_code}}'" ng-click="setLanguage(item)">{{item.language_name |capitalize}}</ion-radio>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

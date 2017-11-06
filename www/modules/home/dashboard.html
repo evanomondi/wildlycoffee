@@ -1,0 +1,35 @@
+<ion-view cache-view="false" view-title="{{'menu' | translate}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right" >
+   <button id="cart_list_icon1" ng-click="viewCart()" class="button-icon button button-clear flaticon-trolley"><i class="badge badge-light header-badge">{{cartCount}}</i></button>
+  </ion-nav-buttons>
+  <ion-content  ng-init="getCategories()">
+    <ion-slide-box class="dashboard-slide" on-slide-changed="slideHasChanged($index)" does-continue="true" auto-play="true" slide-interval="6000">
+      <ion-slide>
+        <div class="image-container"><img ng-src="img/images/slide1.jpg" alt=""></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="image-container"><img ng-src="img/images/slide2.jpg" alt=""></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="image-container"><img ng-src="img/images/slide3.jpg" alt=""></div>
+      </ion-slide>
+    </ion-slide-box>
+  <div class="list card pageNote">
+      <div class="item item-text-wrap">{{'byYourMoodOrPreference' | translate}} </div>
+    </div>
+    <div class="row col-items"  ng-repeat="row in categories track by $index">
+      <div ng-repeat="list in row track by $index" ng-click="openItem(list)" class="col">
+        <div class="content-bg">
+         <div class="dashboard-items" style="background-image: url({{list.imageUrl}});background-repeat: repeat;" ></div>
+          <div class="servive-content"> <i class="icon"></i>
+            <p>{{list.menu_name}}<i class="icon-arrow ion ion-ios-arrow-right"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

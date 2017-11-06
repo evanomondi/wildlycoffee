@@ -1,0 +1,21 @@
+<ion-view view-title="{{'offers' | translate}}">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+	</ion-nav-buttons>
+	<ion-content class="coupons padding" ng-init="offersInt()" id="offersPage">
+		<div class="list" ng-if="offers.length>0">
+			<div class="item item-divider">
+				<h2>{{'offersAvailable' | translate}} </h2>
+			</div>
+			<a class="item item-text-wrap offer" ng-repeat="offer in offers track by $index" ng-click="offerDetails(offer)">
+				<h2><span class="coupon-code">{{offer.offer_name}}</span></h2>
+				<p><span>{{'validFrom' | translate}}: <strong>{{offer.offer_start_date | date:'MMM d, y'}}</strong></span> <span><!--{{'validTo' | translate}}--> to: <strong>{{offer.offer_valid_date | date:'MMM d, y'}}</strong></span></p>
+				<p><span>{{'noOfPersons' | translate}}: <strong>{{offer.serve_no_of_people}}</strong></span> <span><!--{{'noOfProducts' | translate}}--> No. of Items: <strong>{{offer.no_of_products}}</strong></span></p>
+				<div class="discount">
+					<h2>{{siteSettings.currency_symbol}}{{offer.offer_cost}}</h2>
+					<p>{{'discount' | translate}}</p>
+				</div>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

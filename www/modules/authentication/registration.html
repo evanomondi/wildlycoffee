@@ -1,0 +1,44 @@
+<ion-view cache-view="false" view-title="{{'signUp' | translate}}">
+  <ion-header-bar align-title="center" class="bar-positive">
+    <div class="buttons">
+      <button class="button back-button buttons button-clear header-item" ui-sref="app.login"><i class="icon ion-android-arrow-back"></i></button>
+    </div>
+    <h1 class="title">{{'register' | translate}}</h1>
+  </ion-header-bar>
+  <ion-content class="padding" id="registrationPage">
+    <div class="list formList">
+      <form  class="forms" name="registrationForm" novalidate ng-submit="registrationForm.$valid && signUp()">
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : registrationForm.firstName.$error.required && (registrationForm.firstName.$dirty || submitted), 'valid' : registrationForm.firstName.$valid   && (registrationForm.firstName.$dirty || submitted)}">
+        <i class="icon mdi mdi-account"></i>
+        <input type="text" name="firstName" ng-model="registration.first_name" required placeholder="{{'firstName' | translate}}">
+      </label>
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : registrationForm.lastName.$error.required && (registrationForm.lastName.$dirty || submitted), 'valid' : registrationForm.lastName.$valid   && (registrationForm.lastName.$dirty || submitted)}">
+        <i class="icon mdi mdi-account"></i>
+        <input type="text" name="lastName" ng-model="registration.last_name" required placeholder="{{'lastName' | translate}}">
+      </label>
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : (registrationForm.email.$error.required || registrationForm.email.$error.pattern) && (registrationForm.email.$dirty || submitted), 'valid' : registrationForm.email.$valid   && (registrationForm.email.$dirty || submitted)}">
+        <i class="icon mdi mdi-email"></i>
+        <input type="email" name="email" ng-model="registration.identity" required ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i" placeholder="{{'email' | translate}}">
+      </label>
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : (registrationForm.mobileNo.$error.required || registrationForm.mobileNo.$error.pattern) && (registrationForm.mobileNo.$dirty || submitted), 'valid' : registrationForm.mobileNo.$valid   && (registrationForm.mobileNo.$dirty || submitted)}">
+        <i class="icon mdi mdi-phone"></i>
+        <input type="number" name="mobileNo" ng-model="registration.phone" ng-pattern="/^[0-9]{10,10}$/" required placeholder="{{'phoneNumber' | translate}}">
+      </label>
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : (registrationForm.password.$error.required || registrationForm.password.$error.pattern) && (registrationForm.password.$dirty || submitted), 'valid' : registrationForm.password.$valid   && (registrationForm.password.$dirty || submitted)}">
+        <i class="icon mdi mdi-lock"></i>
+        <input type="password" name="password" ng-model="registration.password" pattern=".{4,}" required placeholder="{{'password' | translate}}">
+      </label>
+      <label class="item item-input item-icon-left" ng-class="{ 'has-error' : (registrationForm.confirmPassword.$error.required || registrationForm.confirmPassword.$viewValue!=registrationForm.password.$viewValue) && (registrationForm.confirmPassword.$dirty || submitted), 'valid' : registrationForm.confirmPassword.$valid   && (registrationForm.confirmPassword.$dirty || submitted)}">
+        <i class="icon mdi mdi-lock"></i>
+        <input type="password" compare-to="registration.password" ng-change="compare()" pattern=".{4,}" name="confirmPassword" ng-model="registration.confirmPassword" required placeholder="{{'confirmPassword' | translate}}">
+      </label>
+        <div class="termsCondition">
+        <ion-checkbox ng-model="registration.terms" name="terms"
+                      ng-class="{ 'has-error' : (registrationForm.terms.$error.required) && (registrationForm.terms.$dirty || submitted), 'valid' : registrationForm.terms.$valid   && (registrationForm.terms.$dirty || submitted)}" ng-required="true"></ion-checkbox>
+        {{'iAccept' | translate}} <a href="" ng-click="openTermsConditions()">{{'termsAndConditions' | translate}}</a> </div>
+      <button class="button button-block button-assertive" type="submit"
+              ng-click="submitted=true">{{'register' | translate}}</button>
+        </form>
+    </div>
+  </ion-content>
+</ion-view>

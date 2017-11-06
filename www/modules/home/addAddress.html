@@ -1,0 +1,33 @@
+<ion-view cache-view="false" view-title="{{'addAddress' | translate}}">
+    <ion-nav-buttons side="left">
+        <button ui-sref="app.home_delivery" class="button back-button buttons button-clear header-item"><i class="icon ion-android-arrow-back"></i></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form id="payment_page" name="paymentForm" novalidate ng-submit="addAddress()">
+            <div class="list listForm pyment-type">
+                <div class="item item-icon-right item-text-wrap item-selection" ng-click="open_cities_modal('address')">
+                    <p>{{'selectCity' | translate}}</p>
+                    <h2>{{address.city}}</h2>
+                    <i class="icon ion ion-ios-arrow-down"></i>
+                </div>
+                <div class="item item-icon-right item-text-wrap item-selection" ng-click="open_location_modal('address')">
+                    <p>{{'selectLocation' | translate}}</p>
+                    <h2>{{address.landmark}}</h2>
+                    <i class="icon ion ion-ios-arrow-down"></i>
+                </div>
+                <label class="item item-input item-icon-left" ng-class="{ 'has-error' : paymentForm.platNo.$error.required && (paymentForm.platNo.$dirty || submitted), 'valid' : paymentForm.platNo.$valid   && (paymentForm.platNo.$dirty && submitted)}">
+                    <i class="icon ion ion-grid"></i>
+                    <input name="platNo" type="text" ng-model="address.house_no" placeholder="{{'flatNoHouseNo' | translate}}" required>
+                </label>
+                <label class="item item-input item-icon-left" ng-class="{ 'has-error' : paymentForm.apartmentName.$error.required && (paymentForm.apartmentName.$dirty || submitted), 'valid' : paymentForm.apartmentName.$valid   && (paymentForm.apartmentName.$dirty || submitted)}">
+                    <i class="icon ion ion-cube"></i>
+                    <input name="apartmentName" type="text" ng-model="address.apartment_name" placeholder="{{'apartmentLocalityName' | translate}}" required>
+                </label>
+                <label class="item item-input item-icon-left"><i class="icon ion ion-map"></i>
+                    <input type="text" ng-model="address.other" placeholder="{{'addressOtherOptional' | translate}}">
+                </label>
+            </div>
+            <div class="padding text-center"><button class="button button-assertive button-block" ng-click="submitted=true">{{'save' | translate}}</button></div>
+        </form>
+    </ion-content>
+</ion-view>

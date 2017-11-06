@@ -1,0 +1,31 @@
+<ion-view cache-view="false" view-title="{{'orderHistory' | translate}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear jsm-home" ng-click="home()"></button>
+  </ion-nav-buttons>
+  <ion-content ng-init="orderHistoryInit()" id="orderHistoryPage">
+    <div class="padding">
+      <div class="list card pageNote">
+        <div class="item item-text-wrap">{{'yourOrders' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="list estimatesList" >
+      <a class="item" ng-click="openOrderHistoryDetails(order)" ng-repeat="order in orders track by $index | orderBy: '-order_id'">
+      <p>{{'orderedOn' | translate}} <i class="mdi mdi-calendar"></i> {{order.order_date}}</p>
+        <p>{{'time' | translate}} <i class="mdi mdi-calendar"></i>{{order.order_time}}</p>
+      <div class="amount">
+        <h2 class="addedAmount"><i class="mdi">{{siteSettings.currency_symbol}}</i> {{order.total_cost}}</h2>
+        <p>{{'noOfItems' | translate}} <strong>{{order.no_of_items}}</strong></p>
+        <p><span class="badge badge-balanced">{{order.status}}</span></p>
+
+      </div>
+      </a>
+    </div>
+      <div class="item item-text-wrap" ng-if="orders.length===0">
+        {{'noOrdersFound' | translate}}
+      </div>
+  </ion-content>
+</ion-view>
